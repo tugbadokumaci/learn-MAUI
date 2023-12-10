@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="learn.MainPage"
+             >
+
+
+    <!-- stack, absolute, grid, flex layout -->
+
+
+    <Grid RowDefinitions="140, Auto, Auto, *" ColumnDefinitions=".80*, .20*" Padding="12">
+        <Image Grid.ColumnSpan="2" Source="me.png" BackgroundColor="Orange" >
+
+
+        </Image>
+
+        <Entry Placeholder="Bir renk giriniz: " PlaceholderColor="Blue" Grid.Row="1" Text= "{Binding Color}" x:Name = "ColorNameEntry"> <!-- mainviewmodel yapılan tüm değişiklikler burada gözükür -->
+        </Entry>
+
+        <Button Text= "Renk ekle" Grid.Row="1" Grid.Column="1" Command="{Binding AddColorCommand}">
+        </Button>
+
+         <Button Text= "Renk sil" Grid.Row="2" Grid.Column="1" Command="{Binding DeleteColorCommand}" CommandParameter="{Binding Source = {x:Reference ColorNameEntry}, Path=Text}">
+        </Button>
+
+        <CollectionView Grid.Row="2" Grid.ColumnSpan="2" ItemsSource="{Binding ColorItems}">
+
+
+
+            <!--
+            <CollectionView.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String >Mavi</x:String>
+                    <x:String >Yeşil</x:String>
+                    <x:String >Kırmızı</x:String>
+
+                </x:Array>
+            </CollectionView.ItemsSource>
+             -->
+            <CollectionView.ItemTemplate x:DataType="{x: Type x:String}">
+                <DataTemplate>
+                    <Grid Padding="0.4">
+                        <Frame>
+                            <Label Text="{Binding .}" FontSize="Medium"> </Label>
+
+                        </Frame>
+
+                    </Grid>
+
+                </DataTemplate>
+
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+    </Grid>
+
+
+    <!--<ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <Image
+                Source="dotnet_bot.png"
+                SemanticProperties.Description="Cute dot net bot waving hi to you!"
+                HeightRequest="200"
+                HorizontalOptions="Center" />
+
+            <Label
+                Text="Hello, World!"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="32"
+                HorizontalOptions="Center" />
+
+            <Label
+                Text="Welcome to .NET Multi-platform App UI"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
+                FontSize="18"
+                HorizontalOptions="Center" />
+
+            <Button
+                x:Name="CounterBtn"
+                Text="Click me"
+                SemanticProperties.Hint="Counts the number of times you click"
+                Clicked="OnCounterClicked"
+                HorizontalOptions="Center" />
+
+        </VerticalStackLayout>
+    </ScrollView>-->
+    
+
+</ContentPage>
+
