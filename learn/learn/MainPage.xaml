@@ -2,17 +2,19 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="learn.MainPage"
+             xmlns:viewmodel="clr-namespace:learn.ViewModel"
+
              >
 
-
-    <!-- stack, absolute, grid, flex layout -->
-
-
-    <Grid RowDefinitions="140, Auto, Auto, *" ColumnDefinitions=".80*, .20*" Padding="12">
-        <Image Grid.ColumnSpan="2" Source="me.png" BackgroundColor="Orange" >
+    
+    <Grid RowDefinitions="240, Auto, Auto, Auto, *" ColumnDefinitions=".80*, .20*" Padding="12">
 
 
+        <Image Grid.ColumnSpan="2"  Source="me.png" BackgroundColor="Orange" >
         </Image>
+
+        <Button Text= "QR APP" Grid.ColumnSpan="2"   Command="{Binding TapCommand}">
+        </Button>
 
         <Entry Placeholder="Bir renk giriniz: " PlaceholderColor="Blue" Grid.Row="1" Text= "{Binding Color}" x:Name = "ColorNameEntry"> <!-- mainviewmodel yapılan tüm değişiklikler burada gözükür -->
         </Entry>
@@ -23,7 +25,7 @@
          <Button Text= "Renk sil" Grid.Row="2" Grid.Column="1" Command="{Binding DeleteColorCommand}" CommandParameter="{Binding Source = {x:Reference ColorNameEntry}, Path=Text}">
         </Button>
 
-        <CollectionView Grid.Row="2" Grid.ColumnSpan="2" ItemsSource="{Binding ColorItems}">
+        <CollectionView Grid.Row="4" Grid.ColumnSpan="3" ItemsSource="{Binding ColorItems}" SelectionMode="None">
 
 
 
@@ -40,7 +42,18 @@
             <CollectionView.ItemTemplate x:DataType="{x: Type x:String}">
                 <DataTemplate>
                     <Grid Padding="0.4">
+
                         <Frame>
+
+                            <!--
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source = {RelativeSource AncestorType={x:Type viewmodel: MainViewModel}}, Path=TapCommand}"
+                                                      CommandParameter="{Binding . }"/> 
+                            </Frame.GestureRecognizers>
+
+                            -->
+
+                            
                             <Label Text="{Binding .}" FontSize="Medium"> </Label>
 
                         </Frame>

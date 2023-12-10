@@ -6,7 +6,7 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace learn.ViewModel
 {
-	/* BEFORE COMMUNİTY TOOLKİT MVVM    
+    /* BEFORE COMMUNİTY TOOLKİT MVVM    
 	public class MainViewModel : INotifyPropertyChanged
 	{
         string color;
@@ -34,15 +34,22 @@ namespace learn.ViewModel
         [ObservableProperty]
         ObservableCollection<string> colorItems;
 
+        IConnectivity connectivity;
+
         // default constructor
-        public MainViewModel()
+        public MainViewModel(IConnectivity connectivity)
         {
             ColorItems = new ObservableCollection<string>();
+            this.connectivity = connectivity;
         }
 
         [RelayCommand] // addcolorcommand otomatik olark olluşturuldu. bunu butona eklemeliyiz.
-        void AddColor() // color items içerisine color deerini ekler
+        async Task AddColor() // color items içerisine color deerini ekler
         {
+            if (connectivity.NetworkAccess != NetworkAccess.Internet)
+            {
+                await Shell.Current.DisplayAlert("Hata", "Internet bağlantınız yok", "tamam");
+            }
             ColorItems.Add(Color);
             Color = String.Empty;
         }
@@ -56,6 +63,14 @@ namespace learn.ViewModel
             }
         }
 
+        [RelayCommand] // RelayCommand instead of ICommand
+        async Task Tap(string s)
+        {
+            await Shell.Current.GoToAsync(nameof(DetailPage)); // nameof(DetailPage)
+        }
+
+        [RelayCommand]
+        async Task Navigate() => Shell.Current.GoToAsync(nameof(DetailPage));
     }
 }
 
