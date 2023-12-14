@@ -13,16 +13,18 @@
         <Image Grid.ColumnSpan="2"  Source="me.png" BackgroundColor="Orange" >
         </Image>
 
-        <Button Text= "QR APP" Grid.ColumnSpan="2"   Command="{Binding TapCommand}">
+        <Button Text= "QR APP" Grid.Row="1" Grid.Column="0"   Command="{Binding TapCommand}">
+        </Button>
+        <Button Text= "Resources" Grid.Row="1" Grid.Column="1"   Command="{Binding TapResourceCommand}">
         </Button>
 
-        <Entry Placeholder="Bir renk giriniz: " PlaceholderColor="Blue" Grid.Row="1" Text= "{Binding Color}" x:Name = "ColorNameEntry"> <!-- mainviewmodel yapılan tüm değişiklikler burada gözükür -->
+        <Entry Placeholder="Bir renk giriniz: " PlaceholderColor="white" Grid.Row="2" Text= "{Binding Color}" x:Name = "ColorNameEntry"> <!-- mainviewmodel yapılan tüm değişiklikler burada gözükür -->
         </Entry>
 
-        <Button Text= "Renk ekle" Grid.Row="1" Grid.Column="1" Command="{Binding AddColorCommand}">
+        <Button Text= "Renk ekle" Grid.Row="2" Grid.Column="1" Command="{Binding AddColorCommand}">
         </Button>
 
-         <Button Text= "Renk sil" Grid.Row="2" Grid.Column="1" Command="{Binding DeleteColorCommand}" CommandParameter="{Binding Source = {x:Reference ColorNameEntry}, Path=Text}">
+         <Button Text= "Renk sil" Grid.Row="3" Grid.Column="1" Command="{Binding DeleteColorCommand}" CommandParameter="{Binding Source = {x:Reference ColorNameEntry}, Path=Text}">
         </Button>
 
         <CollectionView Grid.Row="4" Grid.ColumnSpan="3" ItemsSource="{Binding ColorItems}" SelectionMode="None">
@@ -68,40 +70,7 @@
     </Grid>
 
 
-    <!--<ScrollView>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
 
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
-
-            <Label
-                Text="Hello, World!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
-
-            <Label
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
-
-            <Button
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
-
-        </VerticalStackLayout>
-    </ScrollView>-->
     
 
 </ContentPage>

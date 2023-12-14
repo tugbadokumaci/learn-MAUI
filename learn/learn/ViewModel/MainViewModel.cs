@@ -69,6 +69,12 @@ namespace learn.ViewModel
             await Shell.Current.GoToAsync(nameof(DetailPage)); // nameof(DetailPage)
         }
 
+        [RelayCommand] 
+        async Task TapResource(string s)
+        {
+            await Shell.Current.GoToAsync(nameof(ResourcePage)); // nameof(DetailPage)
+        }
+
         [RelayCommand]
         async Task Navigate() => Shell.Current.GoToAsync(nameof(DetailPage));
     }
