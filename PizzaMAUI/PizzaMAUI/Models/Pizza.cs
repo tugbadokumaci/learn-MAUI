@@ -13,10 +13,6 @@ namespace PizzaMAUI.Models
         private int _cartQuantity;
 
         public double Amount => CartQuantity * Price;
-
-        // observable property cart quantitity modify edecek, ve ne zaman cart quantity değişiyorsa Amount'da haberdae et.
-        // Amount tekrar hesaplnamalı
-
         public Pizza Clone() => MemberwiseClone() as Pizza;
     }
 	

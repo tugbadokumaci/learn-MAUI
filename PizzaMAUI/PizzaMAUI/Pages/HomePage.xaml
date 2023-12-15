@@ -1,12 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:PizzaMAUI.ViewModel"
+             xmlns:models="clr-namespace:PizzaMAUI.Models"
              x:Class="PizzaMAUI.Pages.HomePage"
              Title="HomePage"
              Padding="15"
-             Shell.NavBarIsVisible="True">
+             Shell.NavBarIsVisible="True"
+             x:DataType="vm:HomeViewModel">
 <ScrollView>
-        <VerticalStackLayout>
+        <VerticalStackLayout Spacing="10">
             <Border StrokeShape="RoundRectangle 10" StrokeThickness="0">
                 <Grid ColumnDefinitions="*, 150" RowDefinitions="*,Auto">
                     <VerticalStackLayout Grid.Column="0" Grid.Row="0" Spacing="10">
@@ -18,7 +21,29 @@
                 </Grid>
 
             </Border>
+            <Border StrokeShape="RoundRectangle 20" StrokeThickness="2" Stroke="Goldenrod">
+                <Label Text="Search Here .." TextColor="Goldenrod"  Padding="10, 14"></Label>
+            </Border>
+            <Grid ColumnDefinitions="*, *">
+                <Label Grid.Column="0" Text="Popular Items" FontSize="20" FontAttributes="Bold"/>
+                <Label Grid.Column="1" Text="View all" HorizontalOptions="End" VerticalOptions="End" TextDecorations="Underline"/>
 
+            </Grid>
+
+            <FlexLayout BindableLayout.ItemsSource="{Binding Pizzas}" Wrap="Wrap">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate x:DataType="models:Pizza">
+                        <Border FlexLayout.Basis="50%" StrokeShape="RoundRectangle 10" StrokeThickness="0" BackgroundColor="PaleGoldenrod" Padding="0" Margin="2">
+                            <Grid RowDefinitions="150, Auto, Auto, Auto" RowSpacing="5">
+                                <Image Grid.Row="0" Source="{Binding Image}" HeightRequest="150" WidthRequest="150"></Image>
+                            </Grid>
+                        </Border>
+                      
+                    </DataTemplate>
+
+                </BindableLayout.ItemTemplate>
+
+            </FlexLayout>
         </VerticalStackLayout>
 
     </ScrollView>

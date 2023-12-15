@@ -6,6 +6,7 @@ namespace PizzaMAUI.ViewModel
 	{
 		private readonly PizzaService _pizzaService;
         private HomePage homePage;
+        public ObservableCollection<Pizza> Pizzas { get; set; }
 
         public HomeViewModel(PizzaService pizzaService)
 		{
@@ -18,7 +19,6 @@ namespace PizzaMAUI.ViewModel
             this.homePage = homePage;
         }
 
-        public ObservableCollection<Pizza> Pizzas { get; set; }
 
 	}
 }
