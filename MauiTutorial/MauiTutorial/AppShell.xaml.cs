@@ -1,4 +1,4 @@
-﻿namespace PizzaMAUI;
+﻿namespace MauiTutorial;
 
 public partial class AppShell : Shell
 {

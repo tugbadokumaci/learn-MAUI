@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
 using System.Reflection;
+using PizzaMAUI.ViewModel;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 
